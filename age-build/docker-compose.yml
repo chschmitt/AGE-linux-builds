@@ -1,0 +1,41 @@
+version: '3.7'
+services:
+  build-focal:
+    image: age-build:focal
+    build:
+      dockerfile: Dockerfile.focal
+      context: .
+    volumes:
+      - ../../AGE:/home/build/AGE:ro
+      - ../../pcrio:/home/build/pcrio:ro
+      - ../../genieutils:/home/build/genieutils:ro
+      - ../focal:/home/build/build
+    working_dir: '/home/build/build'
+    command: ['sleep', 'infinity']
+  
+  build-jammy:
+    image: age-build:jammy
+    build:
+      dockerfile: Dockerfile.jammy
+      context: .
+    volumes:
+      - ../../AGE:/home/build/AGE:ro
+      - ../../pcrio:/home/build/pcrio:ro
+      - ../../genieutils:/home/build/genieutils:ro
+      - ../jammy:/home/build/build
+    working_dir: '/home/build/build'
+    command: ['sleep', 'infinity']
+  
+  build-bookworm:
+    image: age-build:bookworm
+    build:
+      dockerfile: Dockerfile.bookworm
+      context: .
+    volumes:
+      - ../../AGE:/home/build/AGE:ro
+      - ../../pcrio:/home/build/pcrio:ro
+      - ../../genieutils:/home/build/genieutils:ro
+      - ../bookworm:/home/build/build
+    working_dir: '/home/build/build'
+    command: ['sleep', 'infinity']
+

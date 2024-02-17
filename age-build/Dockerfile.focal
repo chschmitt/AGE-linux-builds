@@ -1,0 +1,25 @@
+FROM ubuntu:20.04
+
+ARG DEBIAN_FRONTEND noninteractive
+
+RUN ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
+    addgroup --gid 1000 build && \
+    adduser --uid 1000 --gid 1000 --disabled-password --shell /bin/bash --gecos '' build && \
+    apt update && \
+    apt install -y \
+        gcc \
+        g++ \
+        cmake \
+        git \
+        make \
+        libz-dev \
+        libboost-dev \
+        libboost-iostreams-dev \
+        libsfml-dev \
+        liblz4-dev \
+        && \
+    apt install -y --no-install-recommends \
+        libwxgtk3.0-gtk3-dev
+        
+USER build
+WORKDIR /home/build
