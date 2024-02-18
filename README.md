@@ -10,9 +10,28 @@ Patches to AGE and its dependencies for the linux builds will be pushed to
 
 There is currently no effort make these changes compatible with Tapsa's repos to have them merged back.
 
+Also, this is more of an experiment. So do not except anything to work.
+
 # Installing the builds
 
-tbd
+There are builds for Ubuntu 22.04 (jammy), Ubuntu 20.04 (focal) and Debian 12 (bookworm).
+
+To install:
+
+- Choose and download your build.
+- Unpack to path of your choice.
+- Enter AGE subdirectory and start the application with `./AdvancedGenieEditor3`
+
+Also, you may need to **install the required libraries** (`libboost-iostreams`, `libsfml` and `wxwdigets`)
+
+```
+# For ubuntu 22.04
+sudo apt install libboost-iostreams1.74.0 libsfml-audio2.5 libsfml-system2.5 libwxgtk3.0-gtk3-0v5
+```
+
+In the future, there may be instructions on how to run the buillds via docker if you are on a distribution that cannot run the builds natively.
+
+
 
 # Build it yourself
 
