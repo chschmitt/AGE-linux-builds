@@ -12,7 +12,20 @@ services:
       - ../focal:/home/build/build
     working_dir: '/home/build/build'
     command: ['sleep', 'infinity']
-  
+
+  build-noble:
+    image: age-build:noble
+    build:
+      dockerfile: Dockerfile.noble
+      context: .
+    volumes:
+      - ../../AGE:/home/build/AGE:ro
+      - ../../pcrio:/home/build/pcrio:ro
+      - ../../genieutils:/home/build/genieutils:ro
+      - ../noble:/home/build/build
+    working_dir: '/home/build/build'
+    command: ['sleep', 'infinity']
+
   build-jammy:
     image: age-build:jammy
     build:

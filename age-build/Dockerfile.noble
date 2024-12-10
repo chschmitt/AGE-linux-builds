@@ -1,0 +1,28 @@
+FROM ubuntu:24.04
+
+ARG DEBIAN_FRONTEND noninteractive
+
+RUN ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
+    groupmod -n build ubuntu && \
+    usermod -m -d /home/build ubuntu && \
+    usermod -l build ubuntu && \
+    # groupadd --gid 1000 build && \
+    # useradd --uid 1000 --gid 1000 --disabled-password --shell /bin/bash --gecos '' build && \
+    apt update && \
+    apt install -y \
+        gcc \
+        g++ \
+        cmake \
+        git \
+        make \
+        libz-dev \
+        libboost-dev \
+        libboost-iostreams-dev \
+        libsfml-dev \
+        liblz4-dev \
+        && \
+    apt install -y --no-install-recommends \
+        libwxgtk3.2-dev
+        
+USER build
+WORKDIR /home/build
